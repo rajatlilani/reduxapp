@@ -29,11 +29,18 @@ import { createSlice, nanoid } from '@reduxjs/toolkit'
 
 const todoSlice = createSlice({
     name: 'todos',
-    initialState: [],
+    initialState: {
+        todo: []
+    },
     reducers: {
         addTodo: (state, action) => {
-            state.push(action.payload);
-            localStorage.setItem('todos', JSON.stringify(state));
+            const todo = {
+                text: (action.payload),
+
+            }
+            state.todo.push(todo)
+            localStorage.setItem('todos', JSON.stringify(state))
+
         },
         deleteTodo: (state, action) => {
             const indexToDelete = state.findIndex((todo) => todo === action.payload);
